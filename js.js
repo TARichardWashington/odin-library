@@ -1,3 +1,5 @@
+"use strict";
+
 // Define a libray and books
 
 var library = [];
@@ -65,7 +67,7 @@ addBookButton.addEventListener('click', function(e) {
     var title = document.querySelector('#name').value;
     var author = document.querySelector('#author').value;
     var pages = document.querySelector('#pages').value;
-    book = new Book(title, author, pages);
+    var book = new Book(title, author, pages);
 
     addBookToLibrary(book);
 
