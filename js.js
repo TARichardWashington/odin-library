@@ -1,5 +1,24 @@
 "use strict";
 
+// Module example
+
+var myModule = (function() {
+
+    // Private method
+    var sayHi = function() {
+        console.log('Hi!');
+    };
+
+    // Public API
+    return {
+        myMethod: function() {
+           sayHi();
+        }
+    };
+})();
+
+myModule.myMethod();
+
 // Define a libray and books
 
 var library = [];
