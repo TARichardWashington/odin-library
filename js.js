@@ -19,6 +19,23 @@ var myModule = (function() {
 
 myModule.myMethod();
 
+// Factory example
+
+var factoryFunction = (name) => {
+
+    // Private function
+    var sayHi = function(name) {
+        console.log('Hi!' + name);
+    }
+
+    return {
+        sayHi: function() { sayHi(name); }
+    };
+};
+
+var sayHier = factoryFunction('Emma');
+sayHier.sayHi();
+
 // Define a libray and books
 
 var library = [];
