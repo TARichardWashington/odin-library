@@ -1,3 +1,5 @@
+// Define a libray and books
+
 var library = [];
 
 function Book(title, author, pages, haveRead) {
@@ -14,17 +16,6 @@ Book.prototype.info = function() {
 function addBookToLibrary(book) {
     library.push(book);
 }
-
-
-var LOTR = new Book('The Lord of The Rings', 'J.R.R Tolkein', 350, false);
-var TR = new Book('The Road', 'Cormack McArthy', 120, true);
-
-addBookToLibrary(LOTR);
-addBookToLibrary(TR);
-
-var booksDom = document.querySelector('#books');
-
-render();
 
 function render() {
     // Clear the library
@@ -51,10 +42,9 @@ function render() {
         readButton.textContent = 'Read';
         readButton.setAttribute('data-id', index);
 
-        // Add event listener to remove the item from the library and re-render
+        // Add event listener to toggle the read status of the book
         readButton.addEventListener('click', function() {
-            console.log(this.dataset.id);
-            library[this.dataset.id].haveRead = true;
+            library[this.dataset.id].haveRead = library[this.dataset.id].haveRead === true ? false : true;
             render();
         });
 
@@ -64,6 +54,8 @@ function render() {
         booksDom.appendChild(bookDom);
     }
 }
+
+// Add ability to create new books and add them to the library
 
 var addBookButton = document.querySelector('#new_book');
 
@@ -79,3 +71,15 @@ addBookButton.addEventListener('click', function(e) {
 
     render();
 });
+
+// Set up initial library
+
+var LOTR = new Book('The Lord of The Rings', 'J.R.R Tolkein', 350, false);
+var TR = new Book('The Road', 'Cormack McArthy', 120, true);
+
+addBookToLibrary(LOTR);
+addBookToLibrary(TR);
+
+var booksDom = document.querySelector('#books');
+
+render();
