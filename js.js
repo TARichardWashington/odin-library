@@ -44,16 +44,35 @@ sayHier.sayHi();
 
 var library = [];
 
-function Book(title, author, pages, haveRead) {
+/* function Book(title, author, pages, haveRead) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.haveRead = haveRead;
 }
 
+
 Book.prototype.info = function() {
     return this.title + ' by ' + this.author + ', ' + this.pages + ' pages, ' + (this.haveRead ? 'have read' : 'have not read');
-};
+};*/ 
+
+// Same as above but with the class syntax
+class Book {
+    constructor(title, author, pages, haveRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.haveRead = haveRead;
+    }
+
+    info() {
+        return this.title + ' by ' + this.author + ', ' + this.pages + ' pages, ' + (this.haveRead ? 'have read' : 'have not read');
+    }
+
+    addBookToLibrary(book) {
+        library.push(book);
+    }
+}
 
 function addBookToLibrary(book) {
     library.push(book);
