@@ -2,17 +2,17 @@
 
 // Module example
 
-var myModule = (function() {
+var myModule = (function () {
 
     // Private method
-    var sayHi = function() {
+    var sayHi = function () {
         console.log('Hi!');
     };
 
     // Public API
     return {
-        myMethod: function() {
-           sayHi();
+        myMethod: function () {
+            sayHi();
         }
     };
 })();
@@ -24,11 +24,11 @@ myModule.myMethod();
 var objectFactoryFunction = (name) => {
 
     // Private function
-    var sayHiName = function(name) {
+    var sayHiName = function (name) {
         console.log('Hi! ' + name);
     }
 
-    var sayHi = () =>{
+    var sayHi = () => {
         sayHiName(name);
     };
 
@@ -54,7 +54,7 @@ var library = [];
 
 Book.prototype.info = function() {
     return this.title + ' by ' + this.author + ', ' + this.pages + ' pages, ' + (this.haveRead ? 'have read' : 'have not read');
-};*/ 
+};*/
 
 // Same as above but with the class syntax
 class Book {
@@ -85,7 +85,7 @@ function render() {
 
     // Add each book to the dom
 
-    for(const [index, book] of library.entries()) {
+    for (const [index, book] of library.entries()) {
         let bookDom = document.createElement('li');
         bookDom.textContent = book.info() + ' ';
 
@@ -94,7 +94,7 @@ function render() {
         deleteButton.setAttribute('data-id', index);
 
         // Add event listener to remove the item from the library and re-render
-        deleteButton.addEventListener('click', function() {
+        deleteButton.addEventListener('click', function () {
             library.splice(this.dataset.id, 1);
             render();
         });
@@ -104,7 +104,7 @@ function render() {
         readButton.setAttribute('data-id', index);
 
         // Add event listener to toggle the read status of the book
-        readButton.addEventListener('click', function() {
+        readButton.addEventListener('click', function () {
             library[this.dataset.id].haveRead = library[this.dataset.id].haveRead === true ? false : true;
             render();
         });
@@ -120,17 +120,19 @@ function render() {
 
 var addBookButton = document.querySelector('#new_book');
 
-addBookButton.addEventListener('click', function(e) {
-    e.preventDefault();
-    
-    var title = document.querySelector('#name').value;
-    var author = document.querySelector('#author').value;
-    var pages = document.querySelector('#pages').value;
-    var book = new Book(title, author, pages);
+addBookButton.addEventListener('click', function (e) {
+    if (e.target.parentNode.checkValidity()) {
+        e.preventDefault();
 
-    addBookToLibrary(book);
+        var title = document.querySelector('#name').value;
+        var author = document.querySelector('#author').value;
+        var pages = document.querySelector('#pages').value;
+        var book = new Book(title, author, pages);
 
-    render();
+        addBookToLibrary(book);
+        e.target.parentNode.reset();
+        render();
+    }
 });
 
 // Set up initial library

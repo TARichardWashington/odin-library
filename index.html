@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>Library</title>
 </head>
-  <body>
-    <h1>
-      Library
-    </h1>
-    <div>
-      <ul id="books">
 
-      </ul>
-    </div>
-      <form>
-        <input type="text" id="name">
-        <input type="text" id="author">
-        <input type="number" id="pages">
-        <button id="new_book">New Book</button>
-      </form>
-    <script src="js.js"></script>
-  </body>
+<body>
+  <h1>
+    Library
+  </h1>
+  <div>
+    <ul id="books">
+
+    </ul>
+  </div>
+  <form>
+    <input type="text" id="name" required="required" />
+    <input type="text" id="author" required>
+    <input type="number" id="pages" required>
+    <button id="new_book" type="submit">New Book</button>
+  </form>
+  <script src="js.js"></script>
+</body>
+
 </html>
